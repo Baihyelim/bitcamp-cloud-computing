@@ -55,14 +55,14 @@ public class MemberListServlet extends HttpServlet {
                 	rs.getString("mid"),
                 	rs.getString("email"));
                 	out.println("</tr>");
-               
+               /*print 메서드 %값 s 타입 = s -> String %d -> date*/
             }
             }
-            out.println("</table>");
         } catch (Exception e) {
             out.println("<p>목록 가져오기 실패!</p>");
             e.printStackTrace(out);
         }
+        out.println("</table>");
         out.println("</body>");
         out.println("</html>");
 
