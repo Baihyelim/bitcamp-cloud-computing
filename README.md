@@ -69,7 +69,12 @@
 ## DAO와 페이지 컨트롤러에서 사용한 애노테이션 패키지를 변경한다.
 -스프링 에노테이션으로 변경한다.
 
-
+## web-11:Spring +Mybatis연동하기
+-기존에 직접 만든 SqlSessionFactoryBean 대신에 MYbatis가 제공하는 
+SqlSessionFactory 대신에 Spring에서 관리한다.
+-DB커넥션 풀은 Mybatis대신에 Spring에서 관리한다.
+-트랜잭션을 다룰 수 있는도록 트랜젝션 관리자를 설정한다.
+-
 
 
 
