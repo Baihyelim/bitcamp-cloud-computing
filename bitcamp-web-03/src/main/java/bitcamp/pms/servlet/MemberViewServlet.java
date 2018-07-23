@@ -20,9 +20,17 @@ public class MemberViewServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//request 파라메터에 한글이 있는 경우는 setCharacterEncoding 메소드를 호출해야합니다.
+		//★파라미터로 전달되는 데이터의 한글 처리
 		 request.setCharacterEncoding("UTF-8");
+		 //getParameter는 클라이언트 요청에 포함된 값을 꺼낼 때 사용됩니다.
+		 //Parameter:매개변수
 	        String id = request.getParameter("id");
 	        
+	        //servlet에서 한글을 사용하기 위해 파라미터로 전달되는 reponse객체의 
+	        //setContentType 메소드를 호출해야 한다.
+	        //response.setContentType메소드는 print 등 html을 출력하는 메소드 보다 먼저 위치해야 합니다.
+	        //★브라우저로 보내지는 데이터의 한글 처리
 	        response.setContentType("text/html;charset=UTF-8");
 	        PrintWriter out = response.getWriter();
 	        
