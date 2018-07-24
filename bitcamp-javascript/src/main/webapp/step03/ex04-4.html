@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>클로저(closure) -var 글로벌변수와 closure </h1>
+
+<script>
+"use strict"
+{
+let interest =0.018;// 년 이자율 
+
+var bank=function(){
+    //클로저에서 바깥 함수의 let변수를 사용할 때
+    //참조하라는 let변수가 블록 안에 위치한다면
+    //로ㅋ
+    //글로벌 변수를 사용한다면?
+    //과연 글로벌변수를 복제를 할까??=>복제를 안한다.
+            //=>글로벌 변수는 바깥 함수의 호출이 끝나더라도 사라지는 변수가 아니기 때문에
+            //     별도의 메모리에 복제해 두지 않는다.
+    return function(money){
+        console.log("만기 금액:", money+(money * interest));
+    }
+    
+}
+   //bank()를 통해 년 이자 계산을 하는 함수를 리턴 받는다.
+   var compute = bank();
+   
+}
+   compute(1000000);
+   
+   //이자율을 변경한 후;
+   interest = 0.045;
+   compute(1000000);
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
