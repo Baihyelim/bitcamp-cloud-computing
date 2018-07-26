@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+
+img{
+    height: 200px;
+}
+
+</style>
+</head>
+<body>
+<h1>DOM API - 자식 태그 제거하기</h1>
+
+
+<div id="d1">
+	<img src = "http://image.hankookilbo.com/i.aspx?Guid=93483236345f4d3d93f07808f47b2dc6&Month=HKSports&size=640">
+	<img src="http://kstatic.inven.co.kr/upload/2017/04/02/bbs/i13699386407.jpg">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1q9l-x4PwNN4ztMobxCE3uQz3R_eTUWssEryqPTnpgTDYYZ1N">
+	<img src="http://img.sbs.co.kr/newsnet/etv/upload/2017/09/20/30000580770_1280.jpg">
+	<img src="http://fimg4.pann.com/new/download.jsp?FileID=46317524">
+</div>
+
+
+
+
+<script>
+"use strict"
+setInterval(()=>{
+    var e= document.querySelector("#d1 > img:first-child");
+
+    if(e == null){
+        clearInterval(tid);
+        return;
+    }
+
+
+	//d1 태그에 막내 자식 태그를 추가한다.
+	d1.appendChild(e)//appendChild->막내 자식태그로 가게함 
+    
+},2000);
+
+
+</script>
+
+</body>
+</html>

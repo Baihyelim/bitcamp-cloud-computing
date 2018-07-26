@@ -6,7 +6,7 @@
 <style>
 div{
     border : 1px solid red;
-    margin: 10px 20px 30px 40px
+    margin: 10px 20px 30px 40px;
 }
 
 #d1{
@@ -58,18 +58,14 @@ console.log(e1.getAttribute("data-no"));
 //=>selector에서는 객체의 프로퍼티가 아니라 태그속성을 사용한다.
 //     따라서 위에서 e1['data-no']로 등록한 것은
 //     태그의 속성이 아니라 객체의 프로퍼티이기 때문에 selector문법에서 사용할 수 없다.
-console.log()
+console.log(document.querySelector("#d1 > a[data-no='100']"))
+console.log("--------------------------");
 
-
-
-//태그 객체에 새로 추가한 속성이 있는것을 확인할수 있다. 
-consol.log(e1.hasOwnProperty("data-no"));
-consol.log(document.querySelector("#d1 > a[data-no='100']"));
 
 
 //방법2)
 var e2 = document.createElement("a");
-e2 setAttribute("href","http://www.daum.net");
+e2 setAttribute("href", "http://www.daum.net");
 e2 innerHTML ="다음카카오";
 d2.appendChild(e2);
 
@@ -79,31 +75,19 @@ e2.setAttribute("data-no", "100");
 //setAttribute()객체의 프로퍼티가 아니라 태그의 속성을 추가한다.
 
 //=>따라서 객체의 프로퍼티를 찾는 hasOwnProperty()에서는 해당 속성을 찾을수 없다.
-console.log()
+console.log(e2.hasOwnProperty("data-no"));
 
 //=>그러나 태그 속성을 찾는 getAttribute()에서는 찾을 수 있다.
-console.log()
+console.log(e2.getAttribute("data-no"));
 
 //=>태그의 속성이기 때문에 selector문법에서 사용할 수 있다.
 console.log(document.querySelector("#d2 > a[data-no='100']"))
 
 //보통 태그에 속성을 추가할 때는 UI fmf wpdjgkfusms rjtdlek.
 //자바스크립트에서UI를 제어한다는 것은 selector를 이용하여
-//해당태그를 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//해당태그를 찾아서 처리하는 것을 말한다.
+//그러니 태그에 속성을 추가할 때는 setAttribute()를 사용하라!
+//
 
 </script>
 
