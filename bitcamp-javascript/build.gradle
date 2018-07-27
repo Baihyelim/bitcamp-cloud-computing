@@ -28,9 +28,15 @@ dependencies {
     //=>providedCompile: 빌드할 때 사용. 배포에는 제외
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 
-    //=>compile
+    
+    // JSTL 라이브러리
+    //JSTL은 톰캣 서버에 없다.컴파일 할때도 필요하지만, 배포할때도 필요한 녀석!!
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    
+    //=>compile: 빌드할 때 사용. 배포에 포함
     compile 'com.google.guava:guava:23.0'
-
+    
+    //=>testCompile: 테스트할 때만 사용.배포에는 제외
     testCompile 'junit:junit:4.12'
     
     
