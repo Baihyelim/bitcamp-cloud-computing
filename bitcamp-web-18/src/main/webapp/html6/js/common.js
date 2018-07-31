@@ -1,0 +1,1 @@
+var serverApiAddr ="http://loclalhost"

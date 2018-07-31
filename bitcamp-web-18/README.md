@@ -16,8 +16,44 @@
 ##html
 AJAX 기반 front-end 웹페이지 작성
 - html/member/list.html : AJAX 기반 회원 목록 페이지 출력 HTML 생성
--html/member/view.html : AJAX 기반 회상 상세 조회 페이지 출력 HTML생성
--html/js/common.js: Query String 분석 함수 추가
+- html/member/view.html : AJAX 기반 회상 상세 조회 페이지 출력 HTML생성
+- html/js/common.js: Query String 분석 함수 추가
 
-### html12
-mini jQuery 라이브러리 작성
+### html2
+mini jQuery(bit.js) 라이브러리 작성
+- DOM API 랩퍼 함수 작성
+- AJAX랩퍼 함수 작성
+- Event 랩퍼 함수 작성
+
+###html3
+jQuery 적용
+- 기존에 bit.js 대신 jQuery 라이브러리를 적용한다.
+
+### html4
+Bootstrap 적용
+- UI에 부트스트랩 CSS적용하기
+- css폴더를 만들어 공통 css관리하기
+
+### html5
+HTML과 JavaScript 분리하기
+- 유지보수를 쉽게 만들기 위해 HTML과 자바스크립트 코드를 분리한다.
+
+### html6
+모바일 웹 앱 배포 준비
+- 외부 라이브러리(JQuery, bootstrap 등 )를 모두 로컬로 가져온다
+- npm을 사용하여 외부 라이브러리를 가져온다.
+- 작업 
+    -source/main/webapp/html6 폴더에서 'npm.init'를 실행: package.json 생성
+    -jquery 라이브러리 가져온다. : npm install jquery -- save
+    -popper.js 라이브러리 가져온다. :npm install bootstrap --save
+    -bootstrap 라이브러리 가져온다.: npm install 을 실행하면  자동으로 package.json에 등록한 
+        모든 라이브러리를 가져온다.
+    
+ 모바일 앱에서 서버에 접속하려면 정확한 서버 주소를 입력해야 한다.왜?
+HTML, CSS, JavaScript가 서버와 같은 컴퓨터에 있는 것이 아니라 각각의 
+사용자 핸드폰에 있기 때문이다.
+src/main/webapp/html6/js 폴더에 common.js파일을 만든다.
+-common.js에 서버 주소를 등록한다.
+-나머지 모든 파일에서 AJAX요청 주소를 변경한다.
+
+Phonegap을 이용하여 모바일 웹 앱 배치하기.

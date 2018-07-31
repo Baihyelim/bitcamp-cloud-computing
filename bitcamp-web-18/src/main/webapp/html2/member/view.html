@@ -23,26 +23,44 @@
 </p>
 </form>
 
-<script src="../js/bit.js"></script>
+<script src="../js/common.js"></script>
 <script>
 "use strict"
 
 var data = null;
-var {id, page, size} = $.parseQuery(location.href);
+var {id, page, size} = parseQuery(location.href);
 
 if (id == undefined) { // 입력 폼 
-    var el = document.querySelectorAll('.viewform');
-    for (var e of el) {
-        e.style.display = 'none';
-    }
-    eId.removeAttribute("readonly");
+// var el = document.querySelectorAll('.viewform');(2018.7.31 없애고 ↓고치기)
+//    e.style.display = 'none';
+//    eId.removeAttribute("readonly");
+//    for (var e of el) {
+   $('.viewform').css('display', 'none')
+   $(eId).removeAttr("readonly");
+
     
 } else { // 상세 보기 폼
-    var el = document.querySelectorAll('.newform');
-    for (var e of el) {
-        e.style.display = 'none';
-    }
-    
+//    var el = document.querySelectorAll('.newform');
+//    for (var e of el) {
+//        e.style.display = 'none';
+//    }
+    $('.newform').css('display', 'none');
+    $.getJSON(`../../json/member/view/${id}`, 
+            function(result){
+                data = result;
+                if(data.member == null){
+                    alert('아이디가 무효합니다.');
+                    lacation.href = "list.html";
+                    return;
+                    
+                }
+                $(eId).val(data.member.id);
+                $(eEmail).val(data.member.email);
+    });
+}
+/* $(eListBtn).click(function(){
+     ?????????????????????????????????????????????*/
+})
     var xhr = new XMLHttpRequest();
     
     xhr.onreadystatechange = function() {
@@ -75,7 +93,7 @@ eListBtn.onclick = function() {
     }
 };
 
-eUpdateBtn.onclick = function() {
+/* eUpdateBtn.onclick = function() {
     var xhr = new XMLHttpRequest();
     
     xhr.onreadystatechange = function() {
@@ -91,7 +109,27 @@ eUpdateBtn.onclick = function() {
             alert('변경 오류입니다!');
             console.log(data.error);
         }
-    };
+    }; */
+    $(eUpdateBtn).click( function() {
+        $.ajax('../..json/member/update',{
+            dataType:'json',
+            data:{
+                id: $(eId.val(),
+                        email:,
+                        password:)
+            },
+            success: function() {}
+                if (data.status == 'success') {
+        let data = JSON.parse(xhr.responseText);
+                    location.href = `list.html?page=${page}&size=${size}`;
+            
+        });
+        var xhr
+        
+        
+        
+    })
+    }
     
     xhr.open('POST', '../../json/member/update', true);
     xhr.setRequestHeader('Content-Type', 
@@ -108,9 +146,9 @@ eDeleteBtn.onclick = function() {
             alert('서버에서 오류 발생!');
             return;
         }
-        let data = JSON.parse(xhr.responseText);
+       /*  let data = JSON.parse(xhr.responseText);
         if (data.status == 'success') {
-            location.href = `list.html?page=${page}&size=${size}`;
+            location.href = `list.html?page=${page}&size=${size}`; */
         } else {
             alert('삭제 오류입니다!');
             console.log(data.error);

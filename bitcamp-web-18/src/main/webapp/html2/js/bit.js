@@ -97,8 +97,32 @@ let bit = function(value) {
         return el.on('click', handler);
     };
     
+ 
+//---2018.7.31 ↑on 부분을 잘 보면 inside(통찰)이 생길것
+    el.css = function(name,value){
+        if(arguments.length == 1){
+            return el[0].style[name];
+        }
+        for(var e of el){
+            e.style[name] = value;
+            }
+        return el;
+    }
+
     return el;
 };
+
+el.val = function(value){
+    if(argurmnts.length == 0){
+        return el[0].value;
+    }
+    for (var e of el){
+        e.value = value;
+    }
+    return el;
+};
+retyrb el;
+//----2018.7.31
 
 bit.parseQuery = function(url) {
     var paramMap = {};
@@ -148,12 +172,23 @@ bit.ajax = function(url, settings) {
         }
     };
     
-    // settings에 서버로 보낼 data가 있다면 url에 포함해야 한다.
+    // settings에 서버로 보낼 data가 있다면 query string으로 만든다.
     if (settings.data) {
         var qs = '';
         for (var propName in settings.data) {
             qs += `&${propName}=${settings.data[propName]}`;
         }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
         if (url.indexOf('?') == -1)
             url += '?';
         url += qs;
@@ -171,13 +206,31 @@ bit.ajax = function(url, settings) {
     return xhr;
 };
 
-bit.getJSON = function(url, p2, p3) {
+//2018년 7월 31일 고치기(p4 늘어남)
+bit.getJSON = function(url, p2, p3, p4) {
     let data = {};
     let success = null;
+    let dataType= 'text';
     
-    if (arguments.length > 1) {
-        if (typeof p2 == "function") success = p2;
-        else data = p2;
+    if (arguments.length > 2) {
+        if (typeof p3 == "function"){
+            data = p2;
+            sucss = p3;
+        }else if{ type p2 =="function"){
+            success = p2;
+            dataType=p3;
+        }else{
+            data = p2;
+            dataType = p3;
+        }
+        else if(arguments.length > 2){
+            data = p2;
+            success = p3;
+            dataType= p4;
+        }
+        return bit.ajax{url}
+            
+        }
         
         if (typeof p3 == "function") success = p3;
     }

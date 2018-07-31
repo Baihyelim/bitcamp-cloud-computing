@@ -1,6 +1,5 @@
 package bitcamp.pms.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,15 +60,13 @@ public class MemberController {
     }
     
     @RequestMapping("update")
-    public Object update(Member member) throws Exception {
-        HashMap<String,Object> result = new HashMap<> ();
+    public String update(Member member) throws Exception {
+        
         if (memberService.update(member) == 0) {
-            result.put("status","fail");
-            result.put("error","해당 아이디가 없습니다.");
+            return "member/updatefail";
         } else {
-            result.put("status","success");
+            return "redirect:list";
         }
-        return result;
     }
     
     @RequestMapping("view/{id}")

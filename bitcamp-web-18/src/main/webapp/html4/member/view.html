@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<div class = "container">
+<title>멤버 보기</title>
+</head>
+<body>
+<h1>멤버 보기</h1>
+<form>
+
+  <div class="form-group row">
+    <label for="eId" class="col-sm-2 col-form-label">아이디</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="eId" placeholder="아이디">
+    </div>
+  </div>
+  
+  
+  <div class="form-group row">
+    <label for="email" class="col-sm-2 col-form-label">아이디</label>
+    <div class="col-sm-8">
+      <input type="email" class="form-control" id="eId" placeholder="이메일">
+    </div>
+  </div>
+  
+  
+  <div class="form-group row">
+    <label for="암호" class="col-sm-2 col-form-label">아이디</label>
+    <div class="col-sm-4">
+      <input type="password" class="form-control" id="password" placeholder="암호">
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <div class="col-sm-10">
+		<button id="eListBtn" type="button">목록</button>
+		<button id="eUpdateBtn" type="button" class="viewform">변경</button>
+		<button id="eDeleteBtn" type="button" class="viewform">삭제</button>
+		<button id="eAddBtn" type="button" class="newform">등록</button>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+  </div>
+  
+  
+
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../js/jquery.bit.js"></script>
+
+<script>
+"use strict"
+
+var data = null;
+var {id, page, size} = parseQuery(location.href);
+
+if (id == undefined) { // 입력 폼 
+   $('.viewform').css('display', 'none')
+   $(eId).removeAttr("readonly");
+
+    
+} else { // 상세 보기 폼
+    $('.newform').css('display', 'none');
+    
+    $.getJSON(`../../json/member/view/${id}`, 
+            function(result){
+                data = result;
+                if(data.member == null){
+                    alert('아이디가 무효합니다.');
+                    lacation.href = "list.html";
+                    return;
+                    
+                }
+                $(eId).val(data.member.id);
+                $(eEmail).val(data.member.email);
+    });
+}
+$(eListBtn).click(function() {
+    if (page) {
+        location.href = `list.html?page=${page}&size=${size}`;
+    } else {
+        location.href = 'list.html';
+    }
+});
+
+$(eUpdateBtn).click(function() {
+    $.post('../../json/member/update', 
+        {
+            id: $(eId).val(), 
+            email: $(eEmail).val(), 
+            password: $(ePassword).val()
+        },
+        function(data) {
+            if (data.status == 'success') {
+                location.href = `list.html?page=${page}&size=${size}`;
+            } else {
+                alert('변경 오류입니다!');
+                console.log(data.error);
+            }
+        },
+        'json');
+});
+
+eDeleteBtn.onclick = function() {
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState < 4) return;
+        if (xhr.status !== 200) {
+            alert('서버에서 오류 발생!');
+            return;
+        }
+        let data = JSON.parse(xhr.responseText);
+        if (data.status == 'success') {
+            location.href = `list.html?page=${page}&size=${size}`;
+        } else {
+            alert('삭제 오류입니다!');
+            console.log(data.error);
+        }
+    };
+    
+    xhr.open('GET', 
+            `../../json/member/delete?id=${eId.value}`,
+            true);
+    xhr.send();
+}
+
+eAddBtn.onclick = function() {
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState < 4) return;
+        if (xhr.status !== 200) {
+            alert('서버에서 오류 발생!');
+            return;
+        }
+        location.href = 'list.html';
+    };
+    
+    xhr.open('POST', '../../json/member/add', true);
+    xhr.setRequestHeader('Content-Type', 
+            'application/x-www-form-urlencoded');
+    xhr.send(`id=${eId.value}&email=${eEmail.value}&password=${ePassword.value}`);
+};
+    
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+    
