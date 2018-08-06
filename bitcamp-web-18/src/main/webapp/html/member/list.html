@@ -45,40 +45,40 @@ eNextBtn.onclick = function() {
 };
 
 function loadList(page, size) {
-    var xhr = new XMLHttpRequest();
-    
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState < 4) return;
-        if (xhr.status !== 200) {
-            alert("서버에서 오류 발생!");
-            return;
-        }
-        data = JSON.parse(xhr.responseText);
-        tbody.innerHTML = '';
-        for (var item of data.list) {
-            var tr = document.createElement("tr");
-            tr.innerHTML = 
-                `<td><a href='#' data-id='${item.id}' onclick='clickViewLink(event)'>${item.id}</a></td>
-                <td>${item.email}</td>`;
-            tbody.appendChild(tr);
-        }
-        
-        ePageNo.innerHTML = data.page;
-        if (data.page <= 1)
-            ePrevBtn.setAttribute('disabled', '');
-        else 
-            ePrevBtn.removeAttribute('disabled');
-        
-        if (data.page >= data.totalPage)
-            eNextBtn.setAttribute('disabled', '');
-        else
-            eNextBtn.removeAttribute('disabled');
-    };
-    
-    xhr.open('GET', 
-            `../../json/member/list?page=${page}&size=${size}`, 
-            true);
-    xhr.send();
+	var xhr = new XMLHttpRequest();
+	
+	xhr.onreadystatechange = function() {
+	    if (xhr.readyState < 4) return;
+	    if (xhr.status !== 200) {
+	        alert("서버에서 오류 발생!");
+	        return;
+	    }
+	    data = JSON.parse(xhr.responseText);
+	    tbody.innerHTML = '';
+	    for (var item of data.list) {
+	        var tr = document.createElement("tr");
+	        tr.innerHTML = 
+		        `<td><a href='#' data-id='${item.id}' onclick='clickViewLink(event)'>${item.id}</a></td>
+		        <td>${item.email}</td>`;
+		    tbody.appendChild(tr);
+	    }
+	    
+	    ePageNo.innerHTML = data.page;
+	    if (data.page <= 1)
+	        ePrevBtn.setAttribute('disabled', '');
+	    else 
+	        ePrevBtn.removeAttribute('disabled');
+	    
+	    if (data.page >= data.totalPage)
+	        eNextBtn.setAttribute('disabled', '');
+	    else
+	        eNextBtn.removeAttribute('disabled');
+	};
+	
+	xhr.open('GET', 
+	        `../../json/member/list?page=${page}&size=${size}`, 
+	        true);
+	xhr.send();
 }
 
 function clickViewLink(event) {

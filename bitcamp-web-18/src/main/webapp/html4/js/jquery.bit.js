@@ -1,4 +1,4 @@
-$.parseQuery(url) {
+$.parseQuery = function(url) {
     var paramMap = {};
 
     var qs = url.split('?');
@@ -10,4 +10,4 @@ $.parseQuery(url) {
         }
     }
     return paramMap;
-}
+};
