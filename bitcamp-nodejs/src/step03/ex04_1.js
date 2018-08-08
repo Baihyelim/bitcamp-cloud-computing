@@ -9,7 +9,7 @@ const url = require('url')
 const mysql = require('mysql');
 
 
-var con = mysql.createPool({
+var pool = mysql.createPool({
     connectionLimit: 10,
     host: '13.125.229.224' ,
     //port: '3306', 

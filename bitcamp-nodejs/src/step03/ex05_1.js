@@ -11,10 +11,10 @@ const mysql = require('mysql');
 
 var pool = mysql.createPool({
     connectionLimit: 10,
-    host: '13.125.229.224' , 
-    //port: '3306',
-    database: 'studydb',
-    user: 'study',
+    host: '13.125.229.224' ,
+    //port: '3306', 
+    database:'studydb',
+    user:'study',
     password: '1111'
 });
 
@@ -22,14 +22,15 @@ var pool = mysql.createPool({
 const server = http.createServer((req, res) => {
     var urlInfo = url.parse(req.url, true);
     
-    if (urlInfo.pathname === '/favicon.ico') {
+    if(urlInfo.pathname ==='/favicon.ico') {
         res.end();
         return;
     }
-            
+    
     res.writeHead(200, {
         'Content-Type': 'text/plain;charset=UTF-8'
     });
+    
     
     if (urlInfo.pathname === '/member/list') {
         var pageNo = 1;
@@ -45,11 +46,11 @@ const server = http.createServer((req, res) => {
         var startIndex = (pageNo - 1) * pageSize;
         
         pool.query('select mid, email from pms2_member limit ?, ?',
-                [startIndex, pageSize],
-                function(err, results) {
-            if (err) {
-                res.end('DB 조회 중 예외 발생!')
-                return;
+                    [startIndex, pageSize],
+                    function(err, results) {
+                if (err) {
+                    res.end('DB 조회 중 예외 발생!')
+                    return;
             }
             
             for (var row of results) {
@@ -58,10 +59,11 @@ const server = http.createServer((req, res) => {
             res.end();
         });
         
+        
     } else if (urlInfo.pathname === '/member/add') {
         pool.query(
-                'insert into pms2_member(mid,email,pwd)\
-                values(?, ?, password(?))',
+                    'insert into pms2_member(mid,email,pwd)\
+                    values(?, ?, password(?))',
             [urlInfo.query.id, urlInfo.query.email, urlInfo.query.password],
             function(err, results) {
                 if (err) {
