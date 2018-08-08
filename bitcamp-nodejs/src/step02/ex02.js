@@ -8,10 +8,10 @@ console.log(mysql);
 //1) DBMS와 연결을 수행할 객체를 준비한다.
 var con = mysql.createConnection({
     host: '13.125.229.224' , // 호스트가 localhost 이면 생략 가능
-    //post: '3306',  // 포트 번호가 3306이면 생략가능
+    //port: '3306',  // 포트 번호가 3306이면 생략가능
     database:'studydb',
     user:'study',
-    password: '1111',
+    password: '1111'
 });
 
 // 2) 연결 객체를 통해 DBMS와 연결한다.
