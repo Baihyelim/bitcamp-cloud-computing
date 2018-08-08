@@ -22,14 +22,14 @@ const server = http.createServer((req, res) => {
     }
     
     
-    console.log('요청 받았음!')
+    console.log('요청 받았음!');
     
     res.writeHead(200, {
         'Content-Type': 'text/plain;charset=UTF-8'
     });
     
     
-    if (urlInfo.pathname !== '/calc' {
+    if (urlInfo.pathname !== '/calc') {
         res.end('해당 URL을 지원하지 않습니다!');
         return;
     }
@@ -40,21 +40,20 @@ const server = http.createServer((req, res) => {
     var result = 0;
     
     switch (op) {
-    case '+' : result =a+b; break;
-    case '-' : result =a-b; break;
-    case '*' : result =a*b; break;
-    case '/' : result =a/b; break;
+    case '+': result = a + b; break;
+    case '-': result = a - b; break;
+    case '*': result = a * b; break;
+    case '/': result = a / b; break;
     default:
         res.write('${op} 연산자를 지원하지 않습니다.')
         res.end();
         return;
     }
     
-    res.write(`${a} +${b} = ${result}\n`)
-    
+    res.write(`${a} ${b} ${op} = ${result}\n`)
     res.end()
 });
 
 server.listen(8000, ()=>{
-    console.log('서버가 시작됨')
+    console.log('서버가 시작됨!')
 })
