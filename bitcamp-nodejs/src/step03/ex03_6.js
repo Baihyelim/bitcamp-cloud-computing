@@ -14,19 +14,15 @@ const server = http.createServer((req, res) => {
         res.end();
         return;
     }
-    
-    if(req.method !== 'POST'){
-       res.end('GET 요청을 지원하지 않습니다.')
-       return;
-    }
-    
     res.writeHead(200, {
         'Content-Type': 'text/plain;charset=UTF-8'
     });
     
-   
-    res.write(req.method);
-    res.end(req);
+    // 파라미터 값을 꺼낼 때는 그냥
+    // "query.파라미터명"으로 지정하면 된다.
+    res.write(`name= ${urlInfo.query.name}\n`)
+    res.write(`age= ${urlInfo.query.age}\n`)
+    res.end();
 });
 
 server.listen(8000, () => {
