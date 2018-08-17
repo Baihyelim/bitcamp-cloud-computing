@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+<h1>회원가입</h1>
+
+<form>
+이메일<tr>
+<input id="" type="email" name="name"><br>
+이름<tr>
+<input id="" type="text" name="age"><br>
+암호<tr>
+<input id="" type="password" name=""><br>
+<input type="submit" value="가입하기"><br>
+</form>
+
+<script>
+"use strict"
+
+var e = document.querySelector("form input[type='submit']");
+e.onclick = function(e) {
+    if (fiName.value.length == 0 || fiAge.value.length == 0) {
+        e.preventDefault();
+        alert("필수 항목을 입력하세요!");
+        return;
+    }
+};
+
+</script>
+
+
+</body>
+</html>
