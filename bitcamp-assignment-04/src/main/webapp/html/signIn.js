@@ -1,7 +1,3 @@
-/*${'#addBtn'}.click() => {
-    console.log('======>')
-};*/
-
 'use strict'
 
 $('#loginBtn').click(() => {
@@ -20,4 +16,3 @@ $('#loginBtn').click(() => {
         alert('서버 요청 중 오류 발생!')
     });
 });
-

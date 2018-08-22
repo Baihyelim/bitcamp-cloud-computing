@@ -1,8 +1,3 @@
-/*${'#addBtn'}.click() => {
-    console.log('======>')
-};*/
-
-
 'use strict'
 
 $('#addBtn').click(() => {

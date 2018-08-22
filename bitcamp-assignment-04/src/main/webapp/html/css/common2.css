@@ -17,6 +17,7 @@ div.container {
 .container > header {
     border-bottom: 1px solid gray;
     height: 60px;
+    padding: 10px;
 }
 
 .container > header #app-name {
@@ -32,18 +33,16 @@ div.container {
 
 .container > footer {
     font-size: 80%;
-    border-top: 1px solid blue;
+    border-top: 1px solid gray;
     padding: 10px;
     overflow: hidden;
 }
 
 .container > footer a {
     float: left;
-
 }
 
 .container > footer #copyright {
     float: right;
-
 }
 

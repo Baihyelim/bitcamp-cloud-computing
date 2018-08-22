@@ -1,13 +1,13 @@
 # 실기 시험 (2018-08-10)
 
-# 평가내용  
+## 평가내용	
 - 주어진 주제의 시스템에 대한 기능 구현 여부를 평가한다.
 - UI 프로토타입 : https://ovenapp.io/view/U1sBifsUKVsxN5CKRYj3NvrGupTBF54F/fTMo8
 
-# 프로젝트 주제   
+## 프로젝트 주제	
 개인 명함관리시스템
 
-# 구현기능  
+## 구현기능	
 - 회원가입(15점)
 - 로그인(10점)
 - 로그아웃(5점)
@@ -20,12 +20,10 @@
 - 명함목록조회에서 검색 기능 추가(15점)
 
 
-# 평가기준  
+## 평가기준	
 - 구현 완료(15점/10점/5점)
 - 구현 부족(13점/9점/4점)
 - 미구현(11점/8점/3점)
-
-# 실기시험 설명(2018-08-16)
 
 ## 구현
 
@@ -77,22 +75,26 @@
     - 콘솔 창에 출력된 로그를 보고 설정 오류가 없는지 확인한다.
     - 웹브라우저로 요청하여 실행 여부를 확인한다.
 
-### 4단계 -기능구현
--회원가입 구현
-    -페이지 컨트롤러  작성(MemberController)
-    -회원가입 폼 작성(signUp.html, signUp.js)
-    -package.json 작성(외부 라이브러리 추가)
-    -'npm install' 실행하여 프론트엔드 라이브러리 가져온다.
-    -공통 코드 작성(common.css, common.js, jquery.bit.js, footer.html)
-    -MemberService.java,MemberServiceImpl.java 작성
-    -MemberRepository.java,MemberMapper.xml작성
--로그인 구현
-    -로그인 폼 작성(signIn.html,signIn.js)
-    -페이지 컨트롤러 작성(AuthController.java)
-    -MemberService.java,MemberServiceImpl.java 에 메서드 추가
-    -MemberRepository.java 에 메서드 추가
-    -MemberMapper.xml에 SQL문 추가
--명함관리 메인홤녀
-    -메인화면 작성(businesscard/index.html)
+### 4단계 - 기능구현
+- 회원 가입 구현
+    - 페이지 컨트롤러 작성(MemberController.java)
+    - 회원 가입 폼 작성(signUp.html, signUp.js)
+    - package.json 작성(외부 라이브러리 추가)
+    - 'npm install' 실행하여 프론트엔드 라이브러리 가져온다.
+    - 공통 코드 작성(common.css, common.js, jquery.bit.js, footer.html)
+    - MemberService.java, MemberServiceImpl.java 작성
+    - MemberRepository.java, MemberMapper.xml 작성
+- 로그인 구현
+    - 로그인 폼 작성(signIn.html, signIn.js)
+    - 페이지 컨트롤러 작성(AuthController.java)
+    - MemberService.java, MemberServiceImpl.java 에 메서드 추가
+    - MemberRepository.java 에 메서드 추가 
+    - MemberMapper.xml 에 SQL 문 추가 
+- 명함관리 메인화면
+    - 메인화면 작성(businesscard/index.html)
+
+
+
+
 
 

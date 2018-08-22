@@ -20,13 +20,13 @@ div.container {
 }
 
 .container > footer #app-name {
-    float: left;
+    position: absolute;
     left: 0px;
     top: 0px;
 }
 
 .container > footer #copyright {
-    float: right;
+    position: absolute;
     right: 0px;
     top: 0px;
 }
